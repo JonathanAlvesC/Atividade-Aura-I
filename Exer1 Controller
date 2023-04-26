@@ -1,0 +1,11 @@
+({
+	aviso : function(component, event, helper) {     
+        var toastEvent = $A.get("e.force:showToast");
+        toastEvent.setParams({
+            título: 'Processo de inclusão realizado com sucesso',
+            mensagem: 'Deu certo parceiro',
+            tipo: 'sucesso'
+        });
+    toastEvent.fire();
+    }
+})

@@ -1,0 +1,25 @@
+({
+	getOpportunities : function(component) {
+        //Atribuindo esse método dentro de um componente
+        let action = component.get("c.getOpportunitiesNR");
+        
+        action.setCallback(this, function(response){
+           
+            //"SUCCESS", "ERROR" e "INCOMPLETE".
+           let state = response.getState();
+            console.log(state);
+            
+            //verifica se o estado(Status) é positivo, caso seja, ele vai atribuir um valor para
+            //a variavel que eu preciso preencher
+            if(state == "SUCCESS"){
+                component.set("v.opps", response.getReturnValue());
+                console.log(reponse.getReturnValue());
+            }
+                                               
+        });
+        
+        //da acesso a biblioteca do Aura e enfileira as ações do front do servidor
+        $A.enqueueAction(action);
+		
+	}
+})
